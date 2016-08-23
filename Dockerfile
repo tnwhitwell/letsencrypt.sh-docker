@@ -7,12 +7,10 @@ RUN apk del git pcre expat
 
 RUN apk add openssl curl bash jq
 
-ADD parts/hook.sh /letsencrypt.sh/hooks/memset/hook.sh
-
 ADD parts/go.sh /letsencrypt.sh/run.sh
 
 ADD parts/dig /usr/local/bin/dig
 
 RUN rm -rf /var/cache/apk/*
 
-ENTRYPOINT /letsencrypt.sh/run.sh
+CMD ["/letsencrypt.sh/run.sh"]
